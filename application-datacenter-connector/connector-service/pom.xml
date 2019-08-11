@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.one4all</groupId>
+        <artifactId>application-datacenter-connector</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+    </parent>
+    <groupId>com.one4all</groupId>
+    <artifactId>connector-service</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <name>connector-service</name>
+    <description>Demo project for Spring Boot</description>
+    <properties>
+        <!--<mapper-starter.version>1.1.3</mapper-starter.version>-->
+        <mapper-starter.version>2.1.5</mapper-starter.version>
+        <ojdbc.version>11.2.0.4</ojdbc.version>
+    </properties>
+    <dependencies>
+        <dependency>
+            <groupId>tk.mybatis</groupId>
+            <artifactId>mapper-spring-boot-starter</artifactId>
+            <version>${mapper-starter.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>javax.persistence</groupId>
+                    <artifactId>persistence-api</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-jdbc</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>druid</artifactId>
+            <version>${druid.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.oracle</groupId>
+            <artifactId>ojdbc6</artifactId>
+            <version>${ojdbc.version}</version>
+        </dependency>
+        <dependency><!-- 添加ehcache缓存 -->
+            <artifactId>ehcache</artifactId>
+            <groupId>net.sf.ehcache</groupId>
+        </dependency>
+        <dependency><!-- 添加内存数据库H2用于测试及缓存数据 -->
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency><!-- 添加数据库脚本版本管理及建表语句自动生成器flyway -->
+            <groupId>org.flywaydb</groupId>
+            <artifactId>flyway-core</artifactId>
+        </dependency>
+<!--        <dependency>&lt;!&ndash; com.github.pagehelper包中已包含此包，不需要重复添加 &ndash;&gt;
+            <groupId>com.github.jsqlparser</groupId>
+            <artifactId>jsqlparser</artifactId>
+            <version>1.2</version>
+        </dependency>-->
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>

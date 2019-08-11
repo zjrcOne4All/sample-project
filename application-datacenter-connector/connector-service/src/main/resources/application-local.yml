@@ -1,0 +1,41 @@
+server:
+  port: 16001
+  servlet:
+    context-path: /
+
+custom:
+  datasource:
+#    database-default: #如果配置文件中有默认数据库的配置，则系统初始化时按配置的数据库来设置，否则自动将H2数据库作为默认连接的数据库
+#      driverClassName: oracle.jdbc.driver.OracleDriver
+#      url: jdbc:oracle:thin:@localhost:1521:orcl
+#      username: cm12580
+#      password: yyghdba
+    database-group:
+      - url: jdbc:oracle:thin:@localhost:1521:orcl
+        driverClassName: oracle.jdbc.OracleDriver
+        username: cm12580
+        password: yyghdba
+      - url: jdbc:oracle:thin:@localhost:1521:orcl
+        driverClassName: oracle.jdbc.OracleDriver
+        username: bookplat
+        password: yyghdba
+#      - url: jdbc:postgresql://172.1.2.61:5432/dwdb?currentSchema=public
+#        driverClassName: org.postgresql.Driver
+#        username: gpadmin
+#        password: gpadmin
+      - url: jdbc:db2://localhost:50000/bidb:currentSchema=loan
+        driverClassName: com.ibm.db2.jcc.DB2Driver
+        username: loan
+        password: loan1234
+
+#druid:
+#  cm12580:
+#    url: jdbc:oracle:thin:@localhost:1521:orcl
+#    driver-class: oracle.jdbc.driver.OracleDriver
+#    username: cm12580
+#    password: yyghdba
+#    initial-size: 1
+#    min-idle: 1
+#    max-active: 20
+#    validationQuery: SELECT 1 FROM DUAL
+#    test-on-borrow: true

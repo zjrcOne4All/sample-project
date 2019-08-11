@@ -1,0 +1,82 @@
+spring:
+  profiles:
+    active: @environment@
+  messages:
+    basename: web/resultCode,connector/resultCode
+  #gzip压缩配置
+  compression:
+    enabled: true
+    mime-types: application/json ,application/xml,text/html,text/xml,text/plain
+    min-response-size: 2048 #默认就是2048 byte
+  cloud:
+    loadbalancer:
+      retry:
+        enabled: true
+  datasource:
+    schema: classpath:db/schema.sql #启动时需要初始化的建表语句
+    data: classpath:db/data.sql #启动时需要初始化的数据
+    initialization-mode: embedded #初始化模式（springboot2.0之后），其中有三个值，always为始终执行初始化，embedded只初始化内存数据库（默认值）,如h2等，never为不执行初始化。
+    type: com.alibaba.druid.pool.DruidDataSource  #配置连接池类型（如果不配置系统默认会使用Hikari连接池）
+    druid:
+      initial-size: 5  #初始化时建立物理连接的个数
+      min-idle: 5 #最小连接池数量
+      max-active: 20  #最大连接池数量 maxIdle已经不再使用
+      max-wait: 60000 #获取连接时最大等待时间，单位毫秒
+      test-while-idle: true #申请连接的时候检测，如果空闲时间大于timeBetweenEvictionRunsMillis，执行validationQuery检测连接是否有效
+      time-between-eviction-runs-millis: 60000  #既作为检测的间隔时间又作为testWhileIdel执行的依据
+      min-evictable-idle-time-millis: 30000 #销毁线程时检测当前连接的最后活动时间和当前时间差大于该值时，关闭当前连接
+      validation-query: SELECT 1  #用来检测连接是否有效的sql，必须是一个查询语句（除了下面几种特殊的，其它基本都可以用SELECT 1）
+                                  ## Oracle： select 1 from dual
+                                  ## DB2： select 1 from sysibm.sysdummy1
+                                  ## postgresql： select version()
+      test-on-borrow: false #申请连接时会执行validationQuery检测连接是否有效,开启会降低性能,默认为true
+      test-on-return: false #归还连接时会执行validationQuery检测连接是否有效,开启会降低性能,默认为true
+      exception-sorter: true  #当数据库抛出不可恢复的异常时,抛弃该连接
+      max-pool-prepared-statement-per-connection-size: 20 #当值大于0时poolPreparedStatements会自动修改为true
+      use-global-data-source-stat: true #合并多个DruidDataSource的监控数据
+      stat-view-servlet:  #设置访问druid监控页的账号和密码,默认没有
+        login-username: druid-admin
+        login-password: admin1234
+      database-h2: #如果没有在各环境属性文件中指定其它数据库，则会将h2数据库作为默认数据源
+        driverClassName: org.h2.Driver
+        url: jdbc:h2:mem:bi_service_api
+        username: h2dba
+        password: h2dba1234
+  tomcat:
+      default-catalog:
+  flyway: #flyway会初始化创建一个h2数据库
+    enabled: false  #禁用flyway，需要开启时可设置为true
+    url: jdbc:h2:mem:bi_service_api;DB_CLOSE_DELAY=-1
+    user: h2dba
+    password: h2dba1234
+    locations: classpath:db/migration
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+  jpa:
+  # create 每次加载hibernate删除表重新建立
+  # create-drop 每次加载hibernate根据model生产表，sessionFactory关闭之后删除表
+  # update 每次加载hibernate更新表结构，不影响数据库（常用）
+  # validate 每次加载hibernate验证表结构，只和数据库内的表比较，不创建新表，但会插入新值
+    hibernate:
+      ddl-auto: create
+    show-sql: true
+    open-in-view: false
+#指定log4j2配置
+logging:
+  config: classpath:log4j2.yml
+#哪些请求加入swagger api 都不想加入，设置一个不存在的路径。
+swagger:
+  paths: /connector/.*
+
+pagehelper:
+  helperDialect: oracle
+  reasonable: true
+  supportMethodsArguments: true
+  params: count=countSql
+
+mapper:
+  mappers:
+    - tk.mybatis.mapper.common.Mapper
+  notEmpty: true

@@ -1,0 +1,106 @@
+{
+	"groups": [
+		{
+			"name": "druid.bookplat",
+			"type": "org.springframework.boot.autoconfigure.web.ServerProperties",
+			"sourceType": "org.springframework.boot.autoconfigure.web.ServerProperties"
+		},
+		{
+			"name": "druid.cm12580",
+			"type": "org.springframework.boot.autoconfigure.web.ServerProperties",
+			"sourceType": "org.springframework.boot.autoconfigure.web.ServerProperties"
+		}
+	],
+	"properties": [
+		{
+			"name": "druid.bookplat.url",
+			"type": "java.lang.String",
+			"description": "A description for 'druid.bookplat.url'"
+		},
+		{
+			"name": "druid.bookplat.driver-class",
+			"type": "java.lang.String",
+			"description": "A description for 'druid.bookplat.driver-class'"
+		},
+		{
+			"name": "druid.bookplat.username",
+			"type": "java.lang.String",
+			"description": "A description for 'druid.bookplat.username'"
+		},
+		{
+			"name": "druid.bookplat.password",
+			"type": "java.lang.String",
+			"description": "A description for 'druid.bookplat.password'"
+		},
+		{
+			"name": "druid.bookplat.initial-size",
+			"type": "java.lang.Integer",
+			"description": "A description for 'druid.bookplat.initial-size'"
+		},
+		{
+			"name": "druid.bookplat.min-idle",
+			"type": "java.lang.Integer",
+			"description": "A description for 'druid.bookplat.min-idle'"
+		},
+		{
+			"name": "druid.bookplat.max-active",
+			"type": "java.lang.Integer",
+			"description": "A description for 'druid.bookplat.max-active'"
+		},
+		{
+			"name": "druid.bookplat.validationQuery",
+			"type": "java.lang.String",
+			"description": "A description for 'druid.bookplat.validationQuery'"
+		},
+		{
+			"name": "druid.bookplat.test-on-borrow",
+			"type": "java.lang.Boolean",
+			"description": "A description for 'druid.bookplat.test-on-borrow'"
+		},
+		{
+			"name": "druid.cm12580.url",
+			"type": "java.lang.String",
+			"description": "A description for 'druid.cm12580.url'"
+		},
+		{
+			"name": "druid.cm12580.driver-class",
+			"type": "java.lang.String",
+			"description": "A description for 'druid.cm12580.driver-class'"
+		},
+		{
+			"name": "druid.cm12580.username",
+			"type": "java.lang.String",
+			"description": "A description for 'druid.cm12580.username'"
+		},
+		{
+			"name": "druid.cm12580.password",
+			"type": "java.lang.String",
+			"description": "A description for 'druid.cm12580.password'"
+		},
+		{
+			"name": "druid.cm12580.initial-size",
+			"type": "java.lang.Integer",
+			"description": "A description for 'druid.cm12580.initial-size'"
+		},
+		{
+			"name": "druid.cm12580.min-idle",
+			"type": "java.lang.Integer",
+			"description": "A description for 'druid.cm12580.min-idle'"
+		},
+		{
+			"name": "druid.cm12580.max-active",
+			"type": "java.lang.Integer",
+			"description": "A description for 'druid.cm12580.max-active'"
+		},
+		{
+			"name": "druid.cm12580.validationQuery",
+			"type": "java.lang.String",
+			"description": "A description for 'druid.cm12580.validationQuery'"
+		},
+		{
+			"name": "druid.cm12580.test-on-borrow",
+			"type": "java.lang.Boolean",
+			"description": "A description for 'druid.cm12580.test-on-borrow'"
+		}
+	]
+}

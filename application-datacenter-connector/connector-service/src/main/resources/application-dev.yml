@@ -1,0 +1,11 @@
+druid:
+  bookplat:
+    url: jdbc:oracle:thin:@localhost:1521:orcl
+    driver-class: oracle.jdbc.driver.OracleDriver
+    username: bookplat
+    password: yyghdba
+    initial-size: 1
+    min-idle: 1
+    max-active: 20
+    validationQuery: SELECT 1 FROM DUAL
+    test-on-borrow: true
